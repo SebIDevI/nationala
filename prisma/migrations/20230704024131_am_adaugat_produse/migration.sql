@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Employer" ADD COLUMN     "subord" TEXT[],
+ALTER COLUMN "room" SET DEFAULT 'Absent',
+ALTER COLUMN "room" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "ProductApp" ALTER COLUMN "pos" SET DEFAULT '0',
+ALTER COLUMN "pos" SET DATA TYPE TEXT;
