@@ -53,7 +53,9 @@ function RankAdmin({
 
   const [src, setSrc] = useState<string>("");
   const generate = () => {
-    QRCode.toDataURL(`http://localhost:3000/app/scan?id=${codP}`).then(setSrc);
+    QRCode.toDataURL(`${process.env.NEXTAUTH_URL}/app/scan?id=${codP}`).then(
+      setSrc
+    );
   };
 
   return (
