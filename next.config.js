@@ -8,6 +8,14 @@ const nextConfig = {
   },
   images: {
     domains: ["lh3.googleusercontent.com", "files.stripe.com", "localhost"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.vercel.com",
+        port: "",
+        pathname: "/image/upload/**",
+      },
+    ],
   },
 };
 
