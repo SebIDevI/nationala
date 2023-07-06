@@ -3,9 +3,12 @@
 import { prisma } from "@/util/prisma";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import Router, { useRouter } from "next/router";
 export default function Muncitor() {
+  const [message, setMessage] = useState("");
+  const [messageF, setMessageF] = useState("");
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -24,7 +27,14 @@ export default function Muncitor() {
     });
 
     const result = await response.json();
-    alert(`Emailul ${result.email} a fost adaugat`);
+    // alert(`Emailul ${result.email} a fost adaugat`);
+    if (result.message) {
+      setMessageF(result.message);
+      setMessage("");
+    } else {
+      setMessage(result.email);
+      setMessageF("");
+    }
   };
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
@@ -33,6 +43,23 @@ export default function Muncitor() {
         onSubmit={handleSubmit}
       >
         <h2 className="text-3xl font-gothamBlack pb-3">Adauga angajat</h2>
+        {message !== "" ? (
+          <>
+            <span className="font-gothamBook text-success">
+              Email-ul <b>{message}</b> a fost adaugat cu succes!
+            </span>
+            <br />
+          </>
+        ) : messageF !== "" ? (
+          <>
+            <span className="font-gothamBook text-error">
+              <b>{messageF}</b>
+            </span>
+            <br />
+          </>
+        ) : (
+          ""
+        )}
         <label htmlFor="email">Email-ul angajatului</label>
         <input
           name="email"
@@ -47,6 +74,10 @@ export default function Muncitor() {
             Adauga
           </button>
         </div>
+        <span className="text-gray-500 font-gothamLight">
+          *pentru a intra in cont, muncitorul trebuie sa acceseze pagina de
+          dashboard si sa isi creeze o parola!
+        </span>
       </form>
     </div>
   );

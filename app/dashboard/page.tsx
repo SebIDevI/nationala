@@ -49,7 +49,7 @@ export default function Muncitor() {
           <p className="text-xl py-4 text-center">Porneste aplicatia!</p>
           <div className="w-full flex text-center py-4">
             <Link
-              className="w-full bg-neutral hover:bg-neutral-focus transition p-2 px-3 rounded-md"
+              className="w-full bg-neutral hover:bg-neutral-focus transition p-2 px-3 rounded-md text-neutral-content"
               href={{
                 pathname: `/app/${user.userId}`,
                 query: {
