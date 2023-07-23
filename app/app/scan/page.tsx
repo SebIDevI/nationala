@@ -7,8 +7,8 @@ function Scan({ searchParams }: ScanParamTypes) {
   const handleForm = async (event: FormEvent) => {
     event.preventDefault();
     const data = {
-      desc: event.target.desc.value,
       id: searchParams.id,
+      desc: event.target.desc.value,
     };
     const JSONdata = JSON.stringify(data);
 

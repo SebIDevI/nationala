@@ -18,7 +18,7 @@ export default async function handler(
   }
   const userFetched = await prisma.productApp.update({
     where: {
-      id: body.id,
+      cod: body.id,
     },
     data: {
       pos: body.desc,
